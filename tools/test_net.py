@@ -66,9 +66,13 @@ if __name__ == '__main__':
     charnet = CharNet()
     charnet.load_state_dict(torch.load(cfg.WEIGHT))
     charnet.eval()
-    charnet.cuda()
+    if torch.cuda.is_available():
+        charnet.cuda()
 
     for im_name in sorted(os.listdir(args.image_dir)):
+        name, suffix = os.path.splitext(im_name)
+        if suffix.lower() not in ['.png', '.jpg', '.jpeg']:
+            continue
         print("Processing {}...".format(im_name))
         im_file = os.path.join(args.image_dir, im_name)
         im_original = cv2.imread(im_file)

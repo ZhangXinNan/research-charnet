@@ -1,0 +1,8 @@
+opencv-python==4.4.0.46
+editdistance==0.5.3
+pyclipper==1.2.0
+shapely==1.7.1
+yacs==0.1.8
+matplotlib==3.3.3
+
+
